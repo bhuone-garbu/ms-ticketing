@@ -6,6 +6,7 @@ This is a second part after learnings from [previous experimentation](https://gi
 
 An attempt to build a proper ticket booking system with microservices.
 
+(TypeScript based)
 * NodeJS/Express
 * React
 * Docker
