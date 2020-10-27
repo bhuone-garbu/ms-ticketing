@@ -7,7 +7,6 @@ This is a second part after learnings from [previous experimentation](https://gi
 Really simple tech stack and simple code.
 
 * NodeJS/Express
-* React
 * Docker
 * Kubernetes (k8s)
 * Ingress Nginx
