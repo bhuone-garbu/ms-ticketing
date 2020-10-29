@@ -4,12 +4,13 @@ deploy:
   kubectl:
     manifests:
       - ./infra/k8s/*
-# don't push to docker on build (local)
 build:
   local:
     push: false
+  googleCloudBuild:
+    projectId: ticketing-dev-294011
   artifacts:
-    - image: bhuone/auth
+    - image: us.gcr.io/ticketing-dev-294011/auth
       context: auth
       docker:
         dockerfile: dockerfile
