@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: us.gcr.io/ticketing-dev-294011/auth
+          image: bhuone/auth
 ---
 apiVersion: v1
 kind: Service
