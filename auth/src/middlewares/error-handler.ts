@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 
-
 export const errorHandler = (
   error: Error,
   req: Request,
@@ -10,6 +9,6 @@ export const errorHandler = (
   console.log('Something went wrong', error);
 
   res.status(400).send({
-    message: 'Something went wrong'
+    message: error.message
   });
 };
