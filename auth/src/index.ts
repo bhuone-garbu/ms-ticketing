@@ -1,13 +1,14 @@
 import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
+import mongoose from 'mongoose';
 
 import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
 import { errorHandler } from './middlewares/error-handler';
-import { NotFoundError } from './errors/not-found-error'
+import { NotFoundError } from './errors/not-found-error';
 
 
 const app = express();
@@ -25,4 +26,21 @@ app.all('*', async () => {
 app.use(errorHandler);
 
 const PORT = 4000;
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+const start = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-serv:27017/auth', {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to mongodb');
+
+  } catch (err) {
+    console.log(err);
+  }
+
+  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+}
+
+start();
