@@ -31,7 +31,7 @@ router.post('/api/users/signin',
     if (!passwordMatch) {
       throw new BadRequestError('Invalid credentials');
     }
-    
+
     // generate jwt
     const userJWT = jwt.sign({
       id: existingUser.id,
@@ -44,7 +44,6 @@ router.post('/api/users/signin',
     };
 
     res.status(200).send(existingUser);
-
   });
 
 export { router as signinRouter };
