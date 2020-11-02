@@ -39,7 +39,7 @@ router.post('/api/users/signup', [
   const userJWT = jwt.sign({
     id: user.id,
     email: user.email
-  }, 'TODOsecret');
+  }, process.env.JWT_KEY!);
 
   // store on the session object
   req.session = {
