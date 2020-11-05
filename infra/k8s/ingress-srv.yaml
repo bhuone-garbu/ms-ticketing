@@ -14,3 +14,8 @@ spec:
             backend:
               serviceName: auth-serv
               servicePort: 4000
+          - path: /?(.*)
+            backend:
+              serviceName: client-serv
+              servicePort: 3000
+            
