@@ -1,6 +1,6 @@
 {
   "name": "@bhuone/common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "testing common package",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
