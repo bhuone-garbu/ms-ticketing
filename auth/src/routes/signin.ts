@@ -32,6 +32,7 @@ router.post('/api/users/signin',
       throw new BadRequestError('Invalid credentials');
     }
 
+    // for k8s, use: 'kubectl create secret generic jwt-secret --from-literal=JWT_KEY=mysecret'
     // generate jwt
     const userJWT = jwt.sign({
       id: existingUser.id,
