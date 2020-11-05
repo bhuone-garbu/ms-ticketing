@@ -2,11 +2,11 @@
 
 ## Intro
 
-This is a second part after learnings from [previous experimentation](https://github.com/bhuone-garbu/ms-blog) to build production grade ms by utilizing third party packages when deemed necessary.
+This is a second part after learnings from [previous experimentation](https://github.com/bhuone-garbu/ms-blog) to build microservice and cover more concepts.
 
 ## Tech Stack:
 
-An attempt to build a proper (Full Stack) ticket booking system with microservices.
+An attempt to build a proper (Full Stack) ticket booking system with microservices. The front-end (FE) is less of a focus on this project.
 
 * NodeJS/Express (TypeScript based)
 * React/Next.js (JavaScript based)
