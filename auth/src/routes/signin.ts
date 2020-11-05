@@ -3,8 +3,7 @@ import { body } from 'express-validator';
 import jwt from 'jsonwebtoken';
 
 import { User } from '../models/user'
-import { validateRequest } from '../middlewares/validated-request';
-import { BadRequestError } from '../errors/bad-request-error';
+import { validateRequest, BadRequestError } from '@bhuone/common';
 import { PasswordManager } from '../services/password-manager';
 
 const router = Router();

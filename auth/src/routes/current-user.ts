@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { currentUserHandler } from '../middlewares/current-user-handler';
+import { currentUserHandler } from '@bhuone/common';
 
 const router = Router();
 
