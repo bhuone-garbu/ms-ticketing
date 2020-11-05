@@ -8,9 +8,8 @@ This is a second part after learnings from [previous experimentation](https://gi
 
 An attempt to build a proper (Full Stack) ticket booking system with microservices.
 
-(TypeScript based)
-* NodeJS/Express
-* React/Next.js
+* NodeJS/Express (TypeScript based)
+* React/Next.js (JavaScript based)
 * Docker
 * Kubernetes (k8s) / Ingress Nginx
 * Skaffold
