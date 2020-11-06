@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: bhuone/tickets
+      context: tickets
+      docker:
+        dockerfile: dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: bhuone/client
       context: client
       docker:

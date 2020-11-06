@@ -9,8 +9,12 @@ const start = async () => {
     throw new Error('JWT_KEY not defined');
   }
 
+  if (!process.env.MONGO_URI) {
+    throw new Error('MONGO_URI not defined');
+  }
+
   try {
-    await mongoose.connect('mongodb://auth-mongo-serv:27017/auth', {
+    await mongoose.connect(process.env.MONGO_URI, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
