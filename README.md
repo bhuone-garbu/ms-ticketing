@@ -14,7 +14,7 @@ An attempt to build a proper (Full Stack) ticket booking system with microservic
 * Kubernetes (k8s) / Ingress Nginx
 * Skaffold
 * MongoDB
-* NATS Streaming Server (EventBus)
+* NATS Streaming Server
 
 Some concepts I've covered (or will cover) for reference:
 
@@ -23,7 +23,7 @@ Some concepts I've covered (or will cover) for reference:
 * Designing micro-services with k8s
 * Testing micro-services
 * Async Event (EventBus design)
-* Handling concurrency when dealing with payments as an example
+* Handling concurrency with async events
 * Github Action to test for CI/CD
 
 ## TODO
