@@ -15,8 +15,11 @@ stan.on('connect', () => {
     process.exit();
   });
 
-  const options = stan.subscriptionOptions().setManualAckMode(true);
-  const subscription = stan.subscribe('ticket:created', 'listenerQueueGroup', options);
+  const options = stan.subscriptionOptions()
+    .setManualAckMode(true)
+    .setDeliverAllAvailable()
+    .setDurableName('test-service');
+  const subscription = stan.subscribe('ticket:created', 'some-queue-group', options);
 
   subscription.on('message', (msg: Message) => {
     const data = msg.getData();
