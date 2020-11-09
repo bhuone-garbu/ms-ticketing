@@ -9,13 +9,18 @@ const stan = nats.connect('ticketing', 'abc', {
 });
 
 
-stan.on('connect', () => {
+stan.on('connect', async () => {
   console.log('Publisher connected to NATS');
-  
+
   const publisher = new TicketCreatedPublisher(stan);
-  publisher.publish({
-    id: '123',
-    title: 'concert',
-    price: 20
-  });
+  try {
+    await publisher.publish({
+      id: '123',
+      title: 'concert',
+      price: 20
+    });
+    console.log('Event published');
+  } catch (error) {
+    console.error(error);
+  }
 });
