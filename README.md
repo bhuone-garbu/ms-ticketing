@@ -18,11 +18,11 @@ An attempt to build a proper (Full Stack) ticket booking system with microservic
 
 Some concepts I've covered (or will cover) for reference:
 
+* Communicating services within a k8s cluster
 * Server side rendering with Next.js
 * Authentication strategies
-* Designing micro-services with k8s
-* Testing micro-services
-* Async Event (EventBus design)
+* Designing micro-services with k8s object configs
+* Use of NATS Streaming Server
 * Handling concurrency with async events
 * Github Action to test for CI/CD
 
