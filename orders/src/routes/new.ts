@@ -23,22 +23,12 @@ router.post('/api/orders', requireAuth,
   async (req: Request, res: Response) => {
 
     const { ticketId } = req.body;
+    
     const ticket = await Ticket.findById(ticketId);
-
     if (!ticket) throw new NotFoundError();
 
-    const exisitingOrder = await Order.findOne({
-      ticket: ticket,
-      status: {
-        $in: [
-          OrderStatus.Created,
-          OrderStatus.AwaitingPayment,
-          OrderStatus.Complete,
-        ]
-      }
-    });
-
-    if (exisitingOrder) throw new BadRequestError('Ticket is already reseved');
+    const isReserved = await ticket.isReserved();
+    if (isReserved) throw new BadRequestError('Ticket is already reseved');
 
     res.status(201).send({});
   });
