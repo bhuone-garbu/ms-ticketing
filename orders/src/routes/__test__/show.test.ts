@@ -16,7 +16,7 @@ const buildTestTicket = async () => {
   return ticket;
 }
 
-it('fetches order for an particular user', async () => {
+it('fetches all orders for an particular user', async () => {
   const ticket1 = await buildTestTicket();
   const ticket2 = await buildTestTicket();
   const ticket3 = await buildTestTicket();
@@ -52,7 +52,7 @@ it('fetches order for an particular user', async () => {
     .get('/api/orders')
     .set('Cookie', userTwo)
     .expect(200);
-  
+
   // ensure the body is correct precisely
   expect(userOneResponse.length).toEqual(1);
   expect(userOneResponse[0].id).toEqual(userOneOrderOne.id);
@@ -63,4 +63,44 @@ it('fetches order for an particular user', async () => {
   expect(userTwoResponse[0].ticket.id).toEqual(ticket2.id);
   expect(userTwoResponse[1].id).toEqual(userTwoOrderTwo.id);
   expect(userTwoResponse[1].ticket.id).toEqual(ticket3.id);
+});
+
+it('fetch the order', async () => {
+  const ticket = await buildTestTicket();
+
+  // pretend - different users
+  const user = global.signin();
+
+  const { body: order } = await request(app)
+    .post('/api/orders')
+    .set('Cookie', user)
+    .send({ ticketId: ticket.id })
+    .expect(201);
+
+  const { body: fetchOrder } = await request(app)
+    .get(`/api/orders/${order.id}`)
+    .set('Cookie', user)
+    .send()
+    .expect(200);
+
+  expect(fetchOrder.id).toEqual(order.id);
+});
+
+it('returns an error if it tried to fetch someone else order', async () => {
+  const ticket = await buildTestTicket();
+
+  // pretend - different users
+  const user = global.signin();
+
+  const { body: order } = await request(app)
+    .post('/api/orders')
+    .set('Cookie', user)
+    .send({ ticketId: ticket.id })
+    .expect(201);
+
+  const { body: fetchOrder } = await request(app)
+    .get(`/api/orders/${order.id}`)
+    .set('Cookie', global.signin())
+    .send()
+    .expect(401);
 });

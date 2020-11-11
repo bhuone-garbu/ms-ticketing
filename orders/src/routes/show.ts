@@ -1,16 +1,18 @@
 import { Router, Request, Response } from 'express';
-import { requireAuth, NotFoundError } from '@bhuone/common';
+import { requireAuth, NotFoundError, NotAuthorized } from '@bhuone/common';
 
 import { Order } from '../models/order';
 
 const router = Router();
 
-router.get('/api/orders/:id', async (req: Request, res: Response) => {
-  // const ticket = await Ticket.findById(req.params.id);
+router.get('/api/orders/:id', requireAuth, async (req: Request, res: Response) => {
+  const order = await Order.findById(req.params.id)
+    .populate('ticket');
 
-  // if (!ticket) throw new NotFoundError();
+  if (!order) throw new NotFoundError();
+  if (order.userId !== req.currentUser!.id) throw new NotAuthorized();
 
-  res.send({});
+  res.send(order);
 });
 
 router.get('/api/orders', requireAuth, async (req: Request, res: Response) => {
