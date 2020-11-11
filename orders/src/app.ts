@@ -4,10 +4,9 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError, currentUserHandler } from '@bhuone/common';
 
-// import { createTicketRouter } from './routes/new';
-// import { showTicketRouter } from './routes/show';
-// import { allTicketRouter } from './routes/all';
-// import { saveTicketRouter } from './routes/save';
+import { createOrderRouter } from './routes/new';
+import { showOrdersRouter } from './routes/show';
+import { deleteOrderRouter } from './routes/delete';
 
 const app = express();
 app.set('trust proxy', true); //express is aware that it's behind a proxy
@@ -21,10 +20,10 @@ app.use(
 
 app.use(currentUserHandler);
 
-// app.use(createTicketRouter);
-// app.use(showTicketRouter);
-// app.use(allTicketRouter);
-// app.use(saveTicketRouter);
+app.use(createOrderRouter);
+app.use(showOrdersRouter);
+app.use(deleteOrderRouter);
+
 
 app.all('*', async () => {
   throw new NotFoundError;
