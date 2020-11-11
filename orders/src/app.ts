@@ -6,7 +6,7 @@ import { errorHandler, NotFoundError, currentUserHandler } from '@bhuone/common'
 
 import { createOrderRouter } from './routes/new';
 import { showOrdersRouter } from './routes/show';
-import { deleteOrderRouter } from './routes/delete';
+import { cancelOrderRouter } from './routes/cancel';
 
 const app = express();
 app.set('trust proxy', true); //express is aware that it's behind a proxy
@@ -22,7 +22,7 @@ app.use(currentUserHandler);
 
 app.use(createOrderRouter);
 app.use(showOrdersRouter);
-app.use(deleteOrderRouter);
+app.use(cancelOrderRouter);
 
 
 app.all('*', async () => {

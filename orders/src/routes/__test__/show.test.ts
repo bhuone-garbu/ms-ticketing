@@ -1,9 +1,7 @@
 import request from 'supertest';
-import mongoose from 'mongoose';
 
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
-import { Order, OrderStatus } from '../../models/order';
 // import { natsWrapper } from '../../nats-wrapper';
 
 const buildTestTicket = async () => {
@@ -68,7 +66,6 @@ it('fetches all orders for an particular user', async () => {
 it('fetch the order', async () => {
   const ticket = await buildTestTicket();
 
-  // pretend - different users
   const user = global.signin();
 
   const { body: order } = await request(app)
