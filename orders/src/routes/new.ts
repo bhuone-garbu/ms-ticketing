@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 import { Router, Request, Response } from 'express';
 import { body } from 'express-validator';
-import { NotFoundError, BadRequestError,
-  OrderStatus, requireAuth, validateRequest } from '@bhuone/common';
+import {
+  NotFoundError, BadRequestError,
+  OrderStatus, requireAuth, validateRequest
+} from '@bhuone/common';
 
 import { Ticket } from '../models/ticket';
 import { Order } from '../models/order';
-// import { TickerCreatedPublisher } from '../events/publishers/ticket-created-publisher';
-// import { natsWrapper } from '../nats-wrapper';
+import { OrderCreatedPublisher } from '../events/publishers/order-created-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = Router();
 
@@ -48,6 +50,16 @@ router.post('/api/orders', requireAuth,
     await order.save();
 
     // TODO: publish event
+    await new OrderCreatedPublisher(natsWrapper.client).publish({
+      id: order.id,
+      status: order.status,
+      userId: order.userId,
+      expiresAt: order.expiresAt.toISOString(),
+      ticket: {
+        id: ticket.id,
+        price: ticket.price
+      }
+    });
 
     res.status(201).send(order);
   });

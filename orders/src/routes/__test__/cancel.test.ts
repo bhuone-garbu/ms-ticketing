@@ -3,10 +3,10 @@ import request from 'supertest';
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
 import { Order, OrderStatus } from '../../models/order';
-// import { natsWrapper } from '../../nats-wrapper';
+import { natsWrapper } from '../../nats-wrapper';
 
 
-it('cancels an order', async () => {
+it('cancels an order and emits an event', async () => {
   const ticket = Ticket.build({
     title: 'test',
     price: 20,
@@ -30,6 +30,7 @@ it('cancels an order', async () => {
 
   const cancelledOrder = await Order.findById(order.id);
   expect(cancelledOrder?.status).toEqual(OrderStatus.Cancelled);
-});
 
-it.todo('it emits event when an order is cancelled');
+  // one for created, and one for cancelled
+  expect(natsWrapper.client.publish).toHaveBeenCalledTimes(2);
+});

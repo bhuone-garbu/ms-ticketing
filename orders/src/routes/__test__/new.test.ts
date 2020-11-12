@@ -4,11 +4,7 @@ import mongoose from 'mongoose';
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
 import { Order, OrderStatus } from '../../models/order';
-// import { natsWrapper } from '../../nats-wrapper';
-
-const createTicket = () => {
-
-}
+import { natsWrapper } from '../../nats-wrapper';
 
 
 it('returns an error if the ticket does not exists', async () => {
@@ -43,7 +39,7 @@ it('returns an error if the ticket is already reserved', async () => {
     .expect(400);
 });
 
-it('reserves a ticket', async () => {
+it('reserves a ticket and emits event', async () => {
   const ticket = Ticket.build({
     title: 'concert',
     price: 20
@@ -56,6 +52,5 @@ it('reserves a ticket', async () => {
     .send({ ticketId: ticket.id })
     .expect(201);
 
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
 });
-
-it.todo('emits an order created event');
