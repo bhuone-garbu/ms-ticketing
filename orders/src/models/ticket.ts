@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import { Order, OrderStatus } from './order';
 
 interface TicketAttrs {
+  id: string,
   title: string,
   price: number;
   // version: string;
@@ -38,16 +39,17 @@ const ticketSchema = new mongoose.Schema({
     transform(doc, ret) {
       ret.id = ret._id;
       delete ret._id;
-    },
-    versionKey: false,
+    }
   }
 });
 
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
-  return new Ticket(attrs);
-}
+  const newAttrs: any = { ...attrs, _id: attrs.id };
+  delete newAttrs.id;
+  return new Ticket(newAttrs);
+};
 
-ticketSchema.methods.isReserved = async function() {
+ticketSchema.methods.isReserved = async function () {
   const existingTicket = await Order.findOne({
     ticket: this,
     status: {
@@ -59,7 +61,7 @@ ticketSchema.methods.isReserved = async function() {
     }
   });
   return !!existingTicket;
-}
+};
 
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 

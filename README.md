@@ -24,6 +24,7 @@ Some concepts I've covered (or will cover) for reference:
 * Designing micro-services with k8s object configs
 * Use of NATS Streaming Server
 * Handling concurrency with async events
+* (OCC) Optimistic concurrency control idea with Mongoose/MongoDB
 * Github Action to test for CI/CD
 
 ## TODO
