@@ -55,3 +55,15 @@ it('sets the userId of the ticket when ticket is ordered', async () => {
 
   expect(message.ack).toHaveBeenCalled();
 });
+
+it('publishes a ticket updated event', async () => {
+  const { listener, data, message } = await setup();
+
+  await listener.onMessage(data, message);
+
+  expect(natsWrapper.client.publish).toHaveBeenCalled();
+
+  const ticketedUpdatedData = JSON.parse(
+    (natsWrapper.client.publish as jest.Mock).mock.calls[0][1]);
+  expect(data.id).toEqual(ticketedUpdatedData.orderId);
+});
