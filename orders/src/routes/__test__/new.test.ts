@@ -6,7 +6,6 @@ import { Ticket } from '../../models/ticket';
 import { Order, OrderStatus } from '../../models/order';
 import { natsWrapper } from '../../nats-wrapper';
 
-
 it('returns an error if the ticket does not exists', async () => {
   const ticketId = mongoose.Types.ObjectId();
 
