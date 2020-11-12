@@ -35,7 +35,7 @@ router.put('/api/tickets/:id',
     ticket.set({
       title: req.body.title,
       price: req.body.price,
-    })
+    });
 
     await ticket.save();
 
@@ -44,6 +44,7 @@ router.put('/api/tickets/:id',
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,
+      version: ticket.version,
     });
 
     res.send(ticket);

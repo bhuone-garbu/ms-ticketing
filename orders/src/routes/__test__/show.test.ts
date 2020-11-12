@@ -1,18 +1,19 @@
+import mongoose from 'mongoose';
 import request from 'supertest';
 
 import { app } from '../../app';
 import { Ticket } from '../../models/ticket';
-// import { natsWrapper } from '../../nats-wrapper';
 
 const buildTestTicket = async () => {
   const ticket = Ticket.build({
+    id: mongoose.Types.ObjectId().toHexString(),
     title: 'test',
     price: 20,
   });
 
   await ticket.save();
   return ticket;
-}
+};
 
 it('fetches all orders for an particular user', async () => {
   const ticket1 = await buildTestTicket();
