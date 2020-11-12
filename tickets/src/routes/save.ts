@@ -4,7 +4,8 @@ import {
   validateRequest,
   requireAuth,
   NotAuthorized,
-  NotFoundError
+  NotFoundError,
+  BadRequestError
 } from '@bhuone/common';
 
 import { TickerUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
@@ -30,7 +31,10 @@ router.put('/api/tickets/:id',
 
     if (!ticket) throw new NotFoundError();
 
+    if (ticket.orderId) throw new BadRequestError('Cannot edit a reserved ticket');
+
     if (ticket.userId !== req.currentUser!.id) throw new NotAuthorized();
+
 
     ticket.set({
       title: req.body.title,
