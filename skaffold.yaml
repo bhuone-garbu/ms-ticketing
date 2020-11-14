@@ -11,7 +11,7 @@ build:
     - image: bhuone/auth
       context: auth
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -19,7 +19,7 @@ build:
     - image: bhuone/tickets
       context: tickets
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -27,7 +27,7 @@ build:
     - image: bhuone/orders
       context: orders
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -35,7 +35,7 @@ build:
     - image: bhuone/expiration
       context: expiration
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -43,7 +43,7 @@ build:
     - image: bhuone/payments
       context: payments
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
@@ -51,7 +51,7 @@ build:
     - image: bhuone/client
       context: client
       docker:
-        dockerfile: dockerfile
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.js'
