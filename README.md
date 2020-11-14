@@ -30,11 +30,18 @@ Some concepts I've covered (or will cover) for reference:
 
 ## Getting started
 
-Install `kubectl` either via using Docker or via minikube.
+### TODO
 
-A `JWT_KEY` secret is needs to be shared and accessible to service.
+Install `kubectl` either via Docker for Mac/Windows or via minikube.
+
+Reminder: The following secrets are needed to be shared and accessible to the cluster:
+
+* `jwt-secret` - JWT_KEY
+* `stripe-secret` - STRIPE_KEY
+
 ```
-kubectl create secret generic jwt-secret --from-literal=JWT_KEY=yoursecret
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=somescret
+kubectl create secret generic strip-secret --from-literal=STRIPE_KEY=strip-secret-key
 ```
 
 
