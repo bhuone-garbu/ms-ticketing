@@ -15,6 +15,7 @@ An attempt to build a proper (Full Stack) ticket booking system with microservic
 * Skaffold
 * MongoDB
 * NATS Streaming Server
+* Stripe for payments
 
 Some concepts I've covered (or will cover) for reference:
 
@@ -25,7 +26,7 @@ Some concepts I've covered (or will cover) for reference:
 * Use of NATS Streaming Server
 * Handling concurrency with async events
 * (OCC) Optimistic concurrency control idea with Mongoose/MongoDB
-* Github Action to test for CI/CD
+* Bull (library with Redis queue) for delayed tasks processing
 
 ## TODO
 
