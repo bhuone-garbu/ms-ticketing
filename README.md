@@ -53,10 +53,11 @@ The following stack are assumed installed in the machine and working:
 * Docker/Kubernetes
 * [Skaffold](www.skaffold.dev)
 
-Then run
+Currently the projects uses `ticketing.dev` for the main root url. Set your `hosts` file to point this domain to localhost (or 127.0.0.1).
+
+Then run command on the root of this project to deploy all the services.
 
 ```
 skaffold dev
 ```
 
-on the root of this project to deploy all the services.
