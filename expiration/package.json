@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@bhuone/common": "^1.1.0",
+    "@bhuone/common": "^1.1.1",
     "@types/bull": "^3.14.4",
     "bull": "^3.18.1",
     "node-nats-streaming": "^0.3.2",
