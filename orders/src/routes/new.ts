@@ -14,7 +14,7 @@ import { natsWrapper } from '../nats-wrapper';
 const router = Router();
 
 // in seconds
-const EXPIRATION_WINDOW = 15 * 60;
+const EXPIRATION_WINDOW = 1 * 60;
 
 router.post('/api/orders', requireAuth,
   [

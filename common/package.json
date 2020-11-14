@@ -1,11 +1,11 @@
 {
   "name": "@bhuone/common",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "testing common package",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
-    "build/**/*"
+    "dist/**/*"
   ],
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
     "directory": "common"
   },
   "scripts": {
-    "clean": "del ./build/*",
+    "clean": "del ./dist/*",
     "build": "npm run clean && tsc",
     "prepublishOnly": "npm run build"
   },
