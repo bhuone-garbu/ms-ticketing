@@ -1,4 +1,4 @@
-import mongoose, { version } from 'mongoose';
+import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 import { OrderStatus } from '@bhuone/common';
 
