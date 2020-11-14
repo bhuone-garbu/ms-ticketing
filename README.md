@@ -44,4 +44,19 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=somescret
 kubectl create secret generic strip-secret --from-literal=STRIPE_KEY=strip-secret-key
 ```
 
+All the deployments of object configuration for k8s are inside the `infra/k8s` director. Check the README over there too to view more inital requirements.
 
+### Dev environment
+
+The following stack are assumed installed in the machine and working:
+
+* Docker/Kubernetes
+* [Skaffold](www.skaffold.dev)
+
+Then run
+
+```
+skaffold dev
+```
+
+on the root of this project to deploy all the services.
