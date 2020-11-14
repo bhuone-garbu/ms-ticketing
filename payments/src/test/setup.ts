@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 declare global {
   namespace NodeJS {
     interface Global {
-      signin(): string[]
+      signin(id?: string): string[];
     }
   }
 }
@@ -40,10 +40,10 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-global.signin = () => {
+global.signin = (id?: string) => {
   // Build a fake jwt payload for test
   const payload = {
-    id: new mongoose.Types.ObjectId().toHexString(),
+    id: id || new mongoose.Types.ObjectId().toHexString(),
     email: 'test@test.com'
   };
 
@@ -59,4 +59,4 @@ global.signin = () => {
 
   // return a string thats the cookie with the encoded data
   return [`express:sess=${base64}`];
-}
+};

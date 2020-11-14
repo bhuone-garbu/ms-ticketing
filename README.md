@@ -28,6 +28,13 @@ Some concepts I've covered (or will cover) for reference:
 * (OCC) Optimistic concurrency control idea with Mongoose/MongoDB
 * Bull (library with Redis queue) for delayed tasks processing
 
-## TODO
+## Getting started
+
+Install `kubectl` either via using Docker or via minikube.
+
+A `JWT_KEY` secret is needs to be shared and accessible to service.
+```
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=yoursecret
+```
 
 
