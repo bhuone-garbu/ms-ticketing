@@ -1,4 +1,4 @@
-import { OrderCreatedListener } from './events/order-created-listener';
+import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {

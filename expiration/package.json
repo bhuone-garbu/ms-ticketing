@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev src/index.ts",
+    "start": "ts-node-dev --rs src/index.ts",
     "test": "jest --watchAll --no-cache"
   },
   "jest": {
@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@bhuone/common": "^1.0.10",
+    "@bhuone/common": "^1.1.0",
     "@types/bull": "^3.14.4",
     "bull": "^3.18.1",
     "node-nats-streaming": "^0.3.2",
