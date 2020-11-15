@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Router from 'next/router';
 
-import useRequest from '../../hooks/useRequest';
+import useRequest from '../../hooks/use-request';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +19,7 @@ const Signup = () => {
     event.preventDefault();
 
     doRequest();
-  }
+  };
 
   return (
     <form onSubmit={onSubmit}>
