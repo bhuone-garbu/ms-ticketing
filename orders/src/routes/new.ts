@@ -33,7 +33,7 @@ router.post('/api/orders', requireAuth,
     if (!ticket) throw new NotFoundError();
 
     const isReserved = await ticket.isReserved();
-    if (isReserved) throw new BadRequestError('Ticket is already reseved');
+    if (isReserved) throw new BadRequestError('Ticket is already reserved');
 
     // calculate an expiration date of this order, 15 mins from now
     const expiration = new Date();
