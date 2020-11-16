@@ -5,9 +5,11 @@ const Header = ({ currentUser }) => {
   const links = [
     !currentUser && { label: 'Sign Up', href: '/auth/signup' },
     !currentUser && { label: 'Sign In', href: '/auth/signin' },
+    currentUser && { label: 'Sell Tickets', href: '/tickets/new' },
+    currentUser && { label: 'My Orders', href: '/orders' },
     currentUser && { label: 'Sign Out', href: '/auth/signout' }
   ]
-    .filter(linkConfig => linkConfig);
+    .filter(Boolean);
 
   return (
     <nav className="navbar navbar-light bg-light">
@@ -27,7 +29,7 @@ const Header = ({ currentUser }) => {
         </ul>
       </div>
     </nav>
-  )
+  );
 };
 
 export default Header;
