@@ -62,3 +62,22 @@ Then run command on the root of this project to deploy all the services.
 skaffold dev
 ```
 
+### Prod deployment
+
+Using digital ocean
+
+```
+doctl auth login
+```
+
+To create cluster context for `kubectl`
+```
+doctl kubernetes cluster kubeconfig save <cluster_name>
+```
+
+In case, new to view contexts (or switch context):
+
+```
+kubectl config view
+kubectl config use-context <context_name>
+```
