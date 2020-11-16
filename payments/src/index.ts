@@ -47,6 +47,7 @@ const start = async () => {
       useUnifiedTopology: true,
     });
     console.log('Connected to mongodb');
+    console.log('Payments service started!!!');
 
   } catch (error) {
     console.log(error);

@@ -20,6 +20,7 @@ const start = async () => {
       useUnifiedTopology: true,
     });
     console.log('Connected to mongodb');
+    console.log('Auth service started!!!');
 
   } catch (error) {
     console.log(error);

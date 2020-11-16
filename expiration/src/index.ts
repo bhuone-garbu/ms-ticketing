@@ -29,6 +29,7 @@ const start = async () => {
 
     new OrderCreatedListener(natsWrapper.client).listen();
 
+    console.log('Expiration service started!!!');
 
   } catch (error) {
     console.log(error);
