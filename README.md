@@ -27,6 +27,7 @@ Some concepts I've covered (or will cover) for reference:
 * Handling concurrency with async events
 * (OCC) Optimistic concurrency control idea with Mongoose/MongoDB
 * Bull (library with Redis queue) for delayed tasks processing
+* Using Github Actions
 
 ## Getting started
 
